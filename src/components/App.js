@@ -138,15 +138,82 @@ const states = [{
 }];
 
 
-function App() 
-{
-	// Do not alter/remove main div
-	return (
-	<div id="main">
-		
-	</div>
-	);
+
+function App() {
+  // indexes
+  const [stateIndex, setStateIndex] = useState(0);
+  const [cityIndex, setCityIndex] = useState(0);
+  const [landmarkIndex, setLandmarkIndex] = useState(0);
+
+  const selectedState = states[stateIndex];
+  const selectedCity = selectedState.city[cityIndex];
+  const selectedLandmark = selectedCity.landmarks[landmarkIndex];
+
+  return (
+    // Do not alter/remove main div
+    <div id="main">
+      
+      {/* STATE DROPDOWN */}
+      <select
+        id="state"
+        value={stateIndex}
+        onChange={(e) => {
+          setStateIndex(Number(e.target.value));
+          setCityIndex(0);
+          setLandmarkIndex(0);
+        }}
+      >
+        {states.map((st, index) => (
+          <option key={index} value={index}>
+            {st.name}
+          </option>
+        ))}
+      </select>
+
+      <div id="state-name">{selectedState.name}</div>
+      <div id="state-description">{selectedState.description}</div>
+
+      {/* CITY DROPDOWN */}
+      <select
+        id="city"
+        value={cityIndex}
+        onChange={(e) => {
+          setCityIndex(Number(e.target.value));
+          setLandmarkIndex(0);
+        }}
+      >
+        {selectedState.city.map((ct, index) => (
+          <option key={index} value={index}>
+            {ct.name}
+          </option>
+        ))}
+      </select>
+
+      <div id="city-name">{selectedCity.name}</div>
+      <div id="city-description">{selectedCity.description}</div>
+
+      {/* LANDMARK DROPDOWN */}
+      <select
+        id="landmark"
+        value={landmarkIndex}
+        onChange={(e) => setLandmarkIndex(Number(e.target.value))}
+      >
+        {selectedCity.landmarks.map((lm, index) => (
+          <option key={index} value={index}>
+            {lm.name}
+          </option>
+        ))}
+      </select>
+
+      <div id="landmark-name">{selectedLandmark.name}</div>
+      <div id="landmark-description">
+        {selectedLandmark.description}
+      </div>
+    </div>
+  );
 }
+
+
 
 
 export default App;
