@@ -169,7 +169,7 @@ function App() {
         ))}
       </select>
 
-      <div id="state-name">{selectedState.name}</div>
+      <div id="state-title">{selectedState.name}</div>
       <div id="state-description">{selectedState.description}</div>
 
       {/* CITY DROPDOWN */}
@@ -188,7 +188,7 @@ function App() {
         ))}
       </select>
 
-      <div id="city-name">{selectedCity.name}</div>
+      <div id="city-title">{selectedCity.name}</div>
       <div id="city-description">{selectedCity.description}</div>
 
       {/* LANDMARK DROPDOWN */}
@@ -204,7 +204,7 @@ function App() {
         ))}
       </select>
 
-      <div id="landmark-name">{selectedLandmark.name}</div>
+      <div id="landmark-title">{selectedLandmark.name}</div>
       <div id="landmark-description">
         {selectedLandmark.description}
       </div>
